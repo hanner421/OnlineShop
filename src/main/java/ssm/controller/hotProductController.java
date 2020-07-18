@@ -10,13 +10,12 @@ import ssm.service.hotProductService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/products")
+@RequestMapping("/products.action")
 public class hotProductController {
 
     @Autowired
     private hotProductService service;
 
-    @RequestMapping("/findAll.action")
     private String findAll(String query, Model model){
         List<Product> productList = service.findAll(query);
         model.addAttribute("productList",productList);
