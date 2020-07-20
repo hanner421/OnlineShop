@@ -1,0 +1,39 @@
+/*footer底部 多快好省 部分*/
+.spot ul {
+    height: 208px;
+    background: #fff;
+    min-width: 990px;
+    max-width: 1250px;
+    margin: 0 auto;
+    border-bottom: 1px solid #e3e3e3
+}
+.spot ul li {
+    width: 25%;
+    float: left;
+    padding-top: 48px;
+    text-align: center;
+}
+
+.spot ul li div {
+    width: 185px;
+    margin-left: 10px;	/*调间隔*/
+    padding-left: 2px;/*调距离*/
+    text-align: left;
+}
+.spot ul li div span {
+    float: left;
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    display: block;
+    background: #C01A1A;
+    border-radius: 50%;
+    font-size: 25px;
+    color: #fff;
+    text-align: center;
+    line-height: 46px
+}
+
+.spot ul li.sp01 div {
+    /*padding-left: 42px*//*左对齐，删掉*/
+}

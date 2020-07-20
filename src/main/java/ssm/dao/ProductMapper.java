@@ -18,6 +18,8 @@ public interface ProductMapper {
 
     List<Product> selectByExample(ProductExample example);
 
+    List<Product> selectByCid(String cid);
+
     Product selectByPrimaryKey(String pid);
 
     int updateByExampleSelective(@Param("record") Product record, @Param("example") ProductExample example);

@@ -88,6 +88,11 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectByCid" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT c.cname,p.pid,p.pname FROM category c,product p WHERE c.cid=p.cid
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

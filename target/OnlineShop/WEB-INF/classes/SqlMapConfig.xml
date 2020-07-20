@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!-- 开启驼峰式命名映射 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 开启log4j日志实现-->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <typeAliases>
+        <package name="ssm.pojo"/>
+    </typeAliases>
+
+</configuration>

@@ -8,16 +8,17 @@ import ssm.pojo.Product;
 import ssm.service.productDetailService;
 
 @Controller
-@RequestMapping(value = "/productdetail.action")
+@RequestMapping("/products")
 public class productDetailController {
 
     @Autowired
     private productDetailService proDetailService;
 
+    @RequestMapping(value = "/productdetail.action")
     public String productDetail(Product product, String pid, Model model){
         product = proDetailService.findProductBypid(pid);
         model.addAttribute("product",product);
-        return "";
+        return "test.jsp";
     }
 
 }

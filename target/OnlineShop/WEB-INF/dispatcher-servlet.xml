@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 完成springmvc相关配置：配置处理器映射器、处理器适配器、视图解析器、扫描包、文件上传等 -->
+
+    <!-- 1.配置处理器映射器、处理器适配器 -->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <!-- 2.配置视图解析器 不配置也会默认提供 -->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        &lt;!&ndash; JSP的前缀 &ndash;&gt;
+        <property name="prefix" value=""></property>
+        &lt;!&ndash; JSP的后缀 &ndash;&gt;
+        <property name="suffix" value=""></property>
+    </bean>-->
+
+    <!-- 3.释放静态资源 -->
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+    <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
+    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
+
+    <!--4.添加扫描包 -->
+    <context:component-scan base-package="ssm.controller,ssm.service"></context:component-scan>
+
+    <!-- 5.文件上传 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置上传文件的最大尺寸为5MB -->
+        <property name="maxUploadSize" value="5242880"></property>
+    </bean>
+
+<!--    &lt;!&ndash; 6.全局异常处理器 &ndash;&gt;-->
+<!--    <bean class="exception.MyHandlerExceptionResolver"></bean>-->
+
+<!--    &lt;!&ndash; 7.拦截器：权限管理、登录校验 &ndash;&gt;-->
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <bean class="com.igeek.ssm.interceptor.LoginHandlerInterceptor"></bean>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+
+</beans>
