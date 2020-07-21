@@ -26,13 +26,17 @@ public class HotProductCategoryService {
             query = "";
         }
         ProductExample productExample = new ProductExample();
-        productExample.setOrderByClause("is_hot DESC,pid DESC LIMIT 0,1");
+        productExample.setOrderByClause("is_hot DESC,pid DESC LIMIT 0,8");
         ProductExample.Criteria criteria = productExample.createCriteria();
         criteria.andPnameLike("%"+query+"%");
         List<Product> hotProductList = productMapper.selectByExample(productExample);
         return hotProductList;
     }
 
+    /**
+     * 这个productCategory是那个category的，代表大标签，就“手机”这种
+     * @return
+     */
     @Transactional(readOnly = true)
     public List<Category> findCategory(){
         CategoryExample categoryExample = new CategoryExample();
@@ -40,5 +44,18 @@ public class HotProductCategoryService {
         criteria.andCidLike("%%");
         List<Category> productCategory = categoryMapper.selectByExample(categoryExample);
         return productCategory;
+    }
+
+
+    @Transactional(readOnly = true)
+    public List<Product> selectByName(String cid,String query){
+        if(query == null){
+            query = "";
+        }
+        if(cid == null){
+            cid = "1";
+        }
+        List<Product> selectProductList = productMapper.selectByExampleAndCid(cid, query);
+        return selectProductList;
     }
 }

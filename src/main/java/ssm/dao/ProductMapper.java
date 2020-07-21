@@ -18,7 +18,11 @@ public interface ProductMapper {
 
     List<Product> selectByExample(ProductExample example);
 
-    List<Product> selectByCid(String cid);
+    List<Product> selectByExampleAndCid(@Param("cid") String cid,@Param("query") String query);
+
+    List<Product> selectByCid(@Param("cid") String cid,@Param("begin") int begin);
+
+    int countByCid(String cid);
 
     Product selectByPrimaryKey(String pid);
 
@@ -29,5 +33,7 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+
+    int updateIsHOt(String pid);
 
 }

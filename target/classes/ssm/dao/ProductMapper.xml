@@ -89,8 +89,19 @@
     </if>
   </select>
 
-  <select id="selectByCid" resultMap="BaseResultMap" parameterType="java.lang.String">
-    SELECT c.cname,p.pid,p.pname FROM category c,product p WHERE c.cid=p.cid
+  <select id="selectByExampleAndCid" resultMap="BaseResultMap">
+    SELECT p.pid,p.pname,p.market_price,p.shop_price,p.pimage,p.pdate,p.is_hot,p.pdesc,p.pflag,p.cid FROM category c,product p WHERE c.cid=p.cid and c.cid=${cid} and p.pname like CONCAT("%","${query}","%")
+  </select>
+
+  <select id="selectByCid" resultMap="BaseResultMap">
+    SELECT p.pid,p.pname,p.market_price,p.shop_price,p.pimage,p.pdate,p.is_hot,p.pdesc,p.pflag,p.cid FROM category c,product p WHERE c.cid=p.cid and c.cid=${cid}
+    <if test="begin!=null">
+      limit ${begin},4
+    </if>
+  </select>
+  
+  <select id="countByCid" resultType="java.lang.Integer" parameterType="java.lang.String">
+    SELECT count(*) FROM (SELECT c.cname,p.pid,p.pname,c.cid FROM category c,product p WHERE c.cid=p.cid and c.cid=${cid}) as pnew
   </select>
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -230,6 +241,11 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
+  <update id="updateIsHOt" parameterType="string">
+    UPDATE product SET is_hot=is_hot+1 WHERE product.pid=#{pid}
+  </update>
+
   <update id="updateByExample" parameterType="map" >
     update product
     set pid = #{record.pid,jdbcType=VARCHAR},

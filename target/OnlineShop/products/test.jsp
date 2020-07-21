@@ -21,5 +21,14 @@
 </c:forEach>
 ${product.pid}
 ${product.isHot}
+<c:forEach items="${productCategory}" var="items">
+    ${items.cid}
+    ${items.cname}
+    <a href="/products/pCategory.action?cid=${items.cid}">productsCategory</a>
+</c:forEach>
+<c:forEach items="${pVo}" var="items">
+    ${items.pid}
+    ${items.pname}
+</c:forEach>
 </body>
 </html>

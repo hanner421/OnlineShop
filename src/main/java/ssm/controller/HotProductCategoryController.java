@@ -18,9 +18,13 @@ public class HotProductCategoryController {
     private HotProductCategoryService service;
 
     @RequestMapping("/products.action")
-    private String findAll(String query, Model model){
+    private String findAll(String query, String cid,Model model){
         List<Product> hotProductList = service.findAll(query);
+        List<Product> selectProductList = service.selectByName(cid, query);
+        List<Category> productCategory = service.findCategory();
+        model.addAttribute("productCategory",productCategory);
         model.addAttribute("hotProductList",hotProductList);
+        model.addAttribute("selectProductList",selectProductList);
         return "test.jsp";
     }
 

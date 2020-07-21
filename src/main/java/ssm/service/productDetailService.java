@@ -14,9 +14,8 @@ public class productDetailService {
 
     @Transactional(readOnly = true)
     public Product findProductBypid(String pid){
+        productMapper.updateIsHOt(pid);
         Product product = productMapper.selectByPrimaryKey(pid);
-        Integer hotNumber = product.getIsHot();
-        product.setIsHot(hotNumber+1);
         return product;
     }
 

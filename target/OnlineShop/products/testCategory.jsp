@@ -16,9 +16,9 @@
 <c:forEach items="${productCategory}" var="items">
     ${items.cid}
     ${items.cname}
-    <a href="/products/pCategory.action?cid=${items.cid}">detail</a>
+    <a href="/products/pCategory.action?cid=${items.cid}">productsCategory</a>
 </c:forEach>
-<c:forEach items="${pCategory}" var="items">
+<c:forEach items="${pVo}" var="items">
     ${items.pid}
     ${items.pname}
 </c:forEach>

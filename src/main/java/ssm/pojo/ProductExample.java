@@ -6,6 +6,28 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ProductExample {
+    //新增一个属性  起始值
+    private Integer begin;
+
+    public Integer getBegin() {
+        return begin;
+    }
+
+    public void setBegin(Integer begin) {
+        this.begin = begin;
+    }
+
+    //cid
+    private String cid;
+
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
+
     protected String orderByClause;
 
     protected boolean distinct;
